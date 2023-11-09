@@ -1,18 +1,24 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../shared/component/component.dart';
+import '../shared/cubit/cubit.dart';
+import '../shared/cubit/state.dart';
 
 class SportsScreen extends StatelessWidget {
   const SportsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child:  Text(
-        "Sports Screen",
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+    return BlocConsumer<NewsCubit, NewsStates>(
+      listener: (context, state) {},
+      builder: (context, state)
+      {
+        var List=  NewsCubit.get(context).Sports;
+
+        return articleBuilder(List,context);
+      },
     );
   }
 }
